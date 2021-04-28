@@ -1,0 +1,43 @@
+MotionGen(
+  (enc): Encoder_RNN(
+    (rnn): GRU(51, 1024, batch_first=True, dropout=0.2)
+    (fc_h2z): LinearBlock(
+      (fc): Linear(in_features=1024, out_features=64, bias=True)
+    )
+  )
+  (dec): Decoder_RNN(
+    (rnn): GRU(51, 1024, batch_first=True, dropout=0.2)
+    (fc_z2h): LinearBlock(
+      (fc): Linear(in_features=64, out_features=1024, bias=True)
+    )
+    (fc_rnn2out): LinearBlock(
+      (fc): Linear(in_features=1024, out_features=51, bias=True)
+    )
+  )
+  (dec_vel): Decoder_RNN(
+    (rnn): GRU(51, 1024, batch_first=True, dropout=0.2)
+    (fc_z2h): LinearBlock(
+      (fc): Linear(in_features=64, out_features=1024, bias=True)
+    )
+    (fc_rnn2out): LinearBlock(
+      (fc): Linear(in_features=1024, out_features=51, bias=True)
+    )
+  )
+)
+MotionDis(
+  (drop): Dropout(p=0.2, inplace=False)
+  (model): Sequential(
+    (0): Conv1dBlock(
+      (pad): ReflectionPad1d((1, 1))
+      (activation): LeakyReLU(negative_slope=0.2, inplace=True)
+      (conv): Conv1d(51, 32, kernel_size=(4,), stride=(2,))
+    )
+    (1): Conv1dBlock(
+      (pad): ReflectionPad1d((1, 1))
+      (norm): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): LeakyReLU(negative_slope=0.2, inplace=True)
+      (conv): Conv1d(32, 64, kernel_size=(4,), stride=(2,))
+    )
+    (2): Conv1d(64, 1, kernel_size=(1,), stride=(1,))
+  )
+)

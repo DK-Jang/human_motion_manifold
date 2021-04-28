@@ -1,0 +1,56 @@
+# name
+name: 'pretrained'
+
+# data paths
+data_dir: './dataset'
+pos_mean_path: './dataset/pos_mean.npy'
+pos_std_path: './dataset/pos_std.npy'
+pos_dimTouse_path: './dataset/pos_dimTouse.npy'
+exp_mean_path: './dataset/exp_mean.npy'
+exp_std_path: './dataset/exp_std.npy'
+exp_dimTouse_path: './dataset/exp_dimTouse.npy'
+
+# data options
+input_size: 51                              # input size : transformation-384, exp-96, quat-128
+n_joints: 32
+z_dim: 64
+seq_len: 150
+representation: rotations_exp                # rotations(quat), rotations_exp, transformations_local, transformations_global
+dimTouse: True
+
+# model options
+gen:
+    rnn_dropout: 0.2
+    concat: False
+    num_units: 1024
+    n_layers: 1
+dis:
+    dim: 32                     # number of filters in the bottommost layer
+    norm: bn                    # normalization layer [none/bn/in/ln]
+    activ: lrelu                # activation function [relu/lrelu/prelu/selu/tanh]
+    n_layer: 2                  # number of layers in D
+    gan_type: lsgan             # GAN loss [lsgan/nsgan]
+    pad_type: reflect           # padding type [zero/reflect]
+
+# logger options
+save_every: 100                  # How often do you want to save trained models / epochs
+
+# training options
+manualSeed: 1777
+valid: True
+valid_every: 100            # / epoch
+num_workers: 4
+n_epochs: 3000                # maximum number of 
+batch_size: 30               # batch size
+lr: 0.001                    # initial learning rate
+lr_decay: 0.999
+gradient_clip: 1.0
+
+# loss weight
+gan_w: 0.001                      # weight of adversarial loss
+recon_x_w: 1                 # weight of image reconstruction loss
+recon_fk_w: 5
+recon_z_w: 0.1              # weight of z loss for reconstruction
+recon_z_reg_w: 0.001         # weight of hidden reconstruction loss
+
+
