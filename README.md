@@ -86,6 +86,13 @@ python remove_noise.py --config pretrained/info/config.yaml
 ```
 Generated motions will be placed under `./pretrained/output/recon/*.hdf5`. -->
 
+## How to train
+To train human motion manifold networks from the scratch, run the following commands.
+```bash
+python train.py --config configs/H3.6M.yaml
+```
+Trained networks will be placed under `./motion_manifold_network/`
+
 ## Visualization
 Easy way to visualize reconstruction results using matplotlib. You should save demo results as world positions.
 For example:
@@ -94,13 +101,6 @@ python reconstruction.py --config pretrained/info/config.yaml \
                          --output_representation positions_world
 python visualization.py --viz_path ./pretrained/output/recon/m_recon.hdf5
 ```
-
-## How to train
-To train human motion manifold networks from the scratch, run the following commands.
-```bash
-python train.py --config configs/H3.6M.yaml
-```
-Trained networks will be placed under `./motion_manifold_network/`
 
 ## Citation
 If you find this work useful for your research, please cite our paper:
