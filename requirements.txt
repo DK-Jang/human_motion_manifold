@@ -1,6 +1,6 @@
 ## Tensorboard
 tensorboard
 tqdm==4.35.0
-pyyaml==5.1.2
+pyyaml==5.4
 matplotlib==3.3.4
 h5py==2.9.0
