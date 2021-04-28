@@ -59,10 +59,10 @@ python reconstruction.py --config pretrained/info/config.yaml   # generate motio
 python result2bvh.py --bvh_dir ./pretrained/output/recon/bvh \
                      --hdf5_path ./pretrained/output/recon/m_recon.hdf5    # hdf5 to bvh 
 ```
-Generated motions(hdf5 format) will be placed under `./pretrained/output/recon/*.hdf5`.
-`m_gt.hdf5`: ground-truth motion,
-`m_recon.hdf5`: generated from joint rotation decoder,
-`m_recon_vel.hdf5`: generated from joint velocity decoder.
+Generated motions(hdf5 format) will be placed under `./pretrained/output/recon/*.hdf5`. \
+`m_gt.hdf5`: ground-truth motion, \
+`m_recon.hdf5`: generated from joint rotation decoder, \
+`m_recon_vel.hdf5`: generated from joint velocity decoder. \
 Generated motions(bvh format) from joint rotation decoder will be placed under `./pretrained/output/recon/bvh/batch_*.bvh`.
 
 - <b>Random sample</b> motions from motion manifold:
@@ -71,7 +71,7 @@ python random_sample.py --config pretrained/info/config.yaml
 python result2bvh.py --bvh_dir ./pretrained/output/random_sample/bvh \
                      --hdf5_path ./pretrained/output/random_sample/m_recon.hdf5
 ```
-Generated motions will be placed under `./pretrained/output/random_sample/*.hdf5`.
+Generated motions will be placed under `./pretrained/output/random_sample/*.hdf5`. \
 Generated motions(bvh format) from joint rotation decoder will be placed under `./pretrained/output/random_sampling/bvh/batch_*.bvh`.
 
 
@@ -119,6 +119,6 @@ If you find this work useful for your research, please cite our paper:
 ```
 
 ## Acknowledgements
-This repository contains pieces of code from the following repositories:
-[QuaterNet: A Quaternion-based Recurrent Model for Human Motion](https://github.com/facebookresearch/QuaterNet).
+This repository contains pieces of code from the following repositories: \
+[QuaterNet: A Quaternion-based Recurrent Model for Human Motion](https://github.com/facebookresearch/QuaterNet). \
 [A Deep Learning Framework For Character Motion Synthesis and Editing](http://theorangeduck.com/page/deep-learning-framework-character-motion-synthesis-and-editing).
