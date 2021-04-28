@@ -1,7 +1,7 @@
 # Constructing Human Motion Manifold with Sequential Networks in PyTorch (Official)
 ![Python](https://img.shields.io/badge/Python->=3.6-Blue?logo=python)  ![Pytorch](https://img.shields.io/badge/PyTorch->=1.5.0-Red?logo=pytorch)
 
-<p align="left"><img src="images/random_sampling.gif" align="center"> <br></p>
+<p align="center"><img src="images/random_sampling.gif" align="center"> <br></p>
 
 > **Constructing Human Motion Manifold with Sequential Networks**<br>
 > [Deok-Kyeong Jang](https://github.com/DK-Jang), [Sung-Hee Lee](http://motionlab.kaist.ac.kr/?page_id=41)<br>
