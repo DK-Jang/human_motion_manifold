@@ -19,8 +19,8 @@ These components contribute to creating compact and versatile motion manifold th
 - Tensorboard 2.4.1
 - h5py 2.9.0
 - tqdm 4.35.0
-- PyYAML 5.1.2
-- matplotlib 3.3.4
+- PyYAML 5.4.
+- matplotlib 3.1.1
 
 ## Installation
 Clone this repository and create environment:
@@ -41,7 +41,7 @@ pip install -r requirements.txt
 To train Human Motion Manifold network, please download the dataset.
 To run the demo, please download the dataset and pre-trained weight both.
 
-<b>H3.6M dataset.</b> To download the [H3.6M](https://drive.google.com/file/d/1HNcgnCMOZ9p6WR-lsKhLOQhHbgOjZHhg/view?usp=sharing) dataset(npz) from Google Drive. Then place the npz file directory within `dataset/`. 
+<b>H3.6M dataset.</b> To download the [H3.6M](https://drive.google.com/file/d/1HNcgnCMOZ9p6WR-lsKhLOQhHbgOjZHhg/view?usp=sharing) dataset(npz) from Google Drive. Then place the npz file directory within `dataset/`. \
 After that, run the following commands:
 
 ```bash
