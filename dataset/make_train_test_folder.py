@@ -56,7 +56,7 @@ skeleton_H36M = Skeleton(offsets=[
     joints_left=[1, 2, 3, 4, 5, 24, 25, 26, 27, 28, 29, 30, 31],
     joints_right=[6, 7, 8, 9, 10, 16, 17, 18, 19, 20, 21, 22, 23])
 
-dataset_path_H36M = '.dataset_h36m.npz'
+dataset_path_H36M = './dataset_h36m.npz'
 dataset_H36M = MocapDataset(dataset_path_H36M, skeleton_H36M, fps=50)
 dataset_H36M.mirror()
 dataset_H36M.compute_exp_angles()
