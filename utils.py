@@ -508,7 +508,7 @@ def prepare_next_batch(seq_len, batch_size, dataset, representation, sequences):
             full_seq_length = dataset[subject][action][representation].shape[0]
 
             max_index = full_seq_length - seq_len - 1
-            start_idx = np.random.randint(1, max_index)    # 가끔 first idx는 모션이 무너진 경우가 있음
+            start_idx = np.random.randint(1, max_index)
             end_idx = start_idx + seq_len
 
             buffer_data[i, :, :dim] = dataset[subject][action][representation][start_idx:end_idx]\

@@ -1,10 +1,3 @@
-# Copyright (c) 2018-present, Facebook, Inc.
-# All rights reserved.
-#
-# This source code is licensed under the license found in the
-# LICENSE file in the root directory of this source tree.
-#
-
 import numpy as np
 import torch
 from utils import qeuler_np, qfix, qexp_np
@@ -182,7 +175,7 @@ class MocapDataset:
                 action[representation] = np.reshape(norm_data, (action[representation].shape[0], -1,
                                                                 action[representation].shape[-1]))
                 
-    def __getitem__(self, key):     # 이것 때문에 그냥 dataset['S1']이런 식으로 해도 불러와 지는고만
+    def __getitem__(self, key):
         return self._data[key]
 
     def subjects(self):

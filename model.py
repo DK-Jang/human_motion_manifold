@@ -78,7 +78,6 @@ class MotionGen(nn.Module):
 # Discriminator
 ##################################################################################
 class MotionDis(nn.Module):
-    # Motion manifold discriminator architecture
     def __init__(self, input_dim, params):
         super(MotionDis, self).__init__()
         n_layer = params['n_layer']
@@ -167,16 +166,6 @@ class Encoder_RNN(nn.Module):
                                requires_grad=True)
 
     def forward(self, x, h=None):
-        """
-        Run a forward pass of this model.
-
-        Arguments:
-             -- x: input tensor of shape (N, L, J), where N is the batch size, L is the sequence length,
-                   J is input size.
-             -- h: hidden state. If None, it defaults to the learned initial state.
-                   (num_layers * num_directions, batch, hidden_size)
-             -- z: (batch_size, z_dim)
-        """
         if h is None:
             h = self.h0.expand(-1, x.shape[0], -1).contiguous()
 
@@ -190,15 +179,6 @@ class Encoder_RNN(nn.Module):
 class Decoder_RNN(nn.Module):
     def __init__(self, input_size, z_dim, seq_len, rnn_dropout, num_units,
                  n_layers, residual, concat):
-        """
-        Construct a Encoder.
-        Arguments:
-            -- input_size:
-            -- z: (batch_size, z_dim)
-            -- output_size: number of actions.
-            -- params: add a quaternion multiplication block on the RNN output to force
-                       the network to model velocities instead of absolute rotations.
-        """
         super(Decoder_RNN, self).__init__()
 
         self.seq_len = seq_len
@@ -221,17 +201,6 @@ class Decoder_RNN(nn.Module):
                                requires_grad=True)
 
     def forward(self, x, z=None, h=None):
-        """
-        Run a forward pass of this model.
-
-        Arguments:
-            -- x: input tensor of shape (N, L, J), where N is the batch size, L is the sequence length,
-                  J is the number of joints, O is the number of actions.
-            -- h: hidden state. If None, it defaults to the learned initial state.
-                  (num_layers * num_directions, batch, hidden_size)
-            -- z: (batch_size, z_dim)
-        """
-
         if h is None:
             h = self.fc_z2h(z)
             h = h.contiguous().view(-1, z.shape[0], self.num_units)
@@ -275,7 +244,6 @@ class Conv1dBlock(nn.Module):
         if norm == 'bn':
             self.norm = nn.BatchNorm1d(norm_dim)
         elif norm == 'in':
-            #self.norm = nn.InstanceNorm2d(norm_dim, track_running_stats=True)
             self.norm = nn.InstanceNorm1d(norm_dim)
         elif norm == 'ln':
             self.norm = nn.LayerNorm(norm_dim)
@@ -387,16 +355,14 @@ class P_Z(object):
 
 class Gaussian_P_Z(P_Z):
     def __init__(self, length):
-        super().__init__(length)  # 같은 P_Z을 상속받고 있으므로 super 함수를 쓴다
+        super().__init__(length)
 
     def sample(self, batch_size):
         mean = np.zeros(self.length)
-        # cov = np.identity(self.length) * 0.5    # CMU
-        cov = np.identity(self.length)        # H36M
+        cov = np.identity(self.length)
         s = np.random.multivariate_normal(mean, cov, batch_size).astype(np.float32)
         s = Variable(torch.from_numpy(s))
         return s
-        # return tf.random_normal([batch_size,self.length])
 
     def sample_np(self, batch_size):
         mean = np.zeros(self.length)
