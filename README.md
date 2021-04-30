@@ -31,7 +31,7 @@ cd human_motion_manifold
 conda create -n motion_manifold python=3.6
 conda activate motion_manifold
 ```
-Install PyTorch >= 1.5 and torchvision from [PyTorch](https://pytorch.org/).
+First, install PyTorch >= 1.5 and torchvision from [PyTorch](https://pytorch.org/). \
 Install the other dependencies:
 ```bash
 pip install -r requirements.txt 
@@ -62,7 +62,7 @@ python result2bvh.py --bvh_dir ./pretrained/output/recon/bvh \
 Generated motions(hdf5 format) will be placed under `./pretrained/output/recon/*.hdf5`. \
 `m_gt.hdf5`: ground-truth motion, \
 `m_recon.hdf5`: generated from joint rotation decoder, \
-`m_recon_vel.hdf5`: generated from joint velocity decoder. \
+`m_recon_vel.hdf5`: generated from joint velocity decoder.<br>
 Generated motions(bvh format) from joint rotation decoder will be placed under `./pretrained/output/recon/bvh/batch_*.bvh`.
 
 - <b>Random sample</b> motions from motion manifold:
@@ -71,7 +71,7 @@ python random_sample.py --config pretrained/info/config.yaml
 python result2bvh.py --bvh_dir ./pretrained/output/random_sample/bvh \
                      --hdf5_path ./pretrained/output/random_sample/m_recon.hdf5
 ```
-Generated motions will be placed under `./pretrained/output/random_sample/*.hdf5`. \
+Generated motions will be placed under `./pretrained/output/random_sample/*.hdf5`.<br>
 Generated motions(bvh format) from joint rotation decoder will be placed under `./pretrained/output/random_sampling/bvh/batch_*.bvh`.
 
 
@@ -94,7 +94,7 @@ python train.py --config configs/H3.6M.yaml
 Trained networks will be placed under `./motion_manifold_network/`
 
 ## Visualization
-Easy way to visualize reconstruction results using matplotlib. You should save demo results as world positions.
+Easy way to visualize reconstruction results using matplotlib. You should save demo results as world positions. \
 For example:
 ```bash
 python reconstruction.py --config pretrained/info/config.yaml \
